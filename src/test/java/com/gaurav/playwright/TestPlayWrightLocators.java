@@ -167,7 +167,7 @@ class TestPlayWrightLocators {
                     .click();
 
             List<String> errorMessages = page.getByRole(AriaRole.ALERT).allTextContents();
-            Assertions.assertTrue(!errorMessages.isEmpty());
+            Assertions.assertFalse(errorMessages.isEmpty());
         }
 
         @DisplayName("Using the HEADING role")
