@@ -148,7 +148,7 @@ class TestPlayWrightLocators {
         @Test
         void locateVisibleItems() {
             int dropdownItems = page.locator(".dropdown-item:visible").count();
-            Assertions.assertTrue(dropdownItems == 0);
+            Assertions.assertEquals(0, dropdownItems);
         }
     }
 
