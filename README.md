@@ -1,4 +1,3 @@
-# Playwright_with_Java
 # Mastering Modern Test Automation With Playwright In Java
 
 This repository contains the sample code for the **[Mastering Modern Test Automation With Playwright In Java](https://www.udemy.com/course/mastering-modern-test-automation-with-playwright-in-java/?referralCode=06560D474D519B88409D)** course. It is designed to complement your learning experience, providing hands-on examples and exercises for each module of the course.
@@ -117,16 +116,3 @@ git checkout -b module-5-exercises
 
 3. **Continue From the Reset State:**
    Use the previous module's code as the starting point for the new module, and continue with the exercises.
-
-
-### Step 5: Submitting Your Work
-If you are following along as part of the [Serenity Dojo coaching program](http://serenitydojo.academy), you will be able to get feedback about your work from one of the Serenity Dojo coaches. Here is how you do that:
-
-1. Push Your Changes to Your Repository:
-   Push your completed exercises to your forked repository to save your work:
-```bash
-git push origin <your-branch-name>
-```
-
-2. Share Your Branch:
-   If requested, share the branch link with your instructor or team for review.

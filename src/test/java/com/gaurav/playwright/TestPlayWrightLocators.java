@@ -3,7 +3,6 @@ package com.gaurav.playwright;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.AriaRole;
-import com.microsoft.playwright.options.LoadState;
 import com.microsoft.playwright.options.SelectOption;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
@@ -27,7 +26,7 @@ class TestPlayWrightLocators {
     static void setUpBrowser() {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(true)
+                new BrowserType.LaunchOptions().setHeadless(false)
                         .setArgs(Arrays.asList("--no-sandbox", "--disable-extensions", "--disable-gpu"))
         );
     }
@@ -206,9 +205,11 @@ class TestPlayWrightLocators {
         @DisplayName("Identifying checkboxes")
         @Test
         void byCheckboxes() {
+            page.pause();
+            openPage();
             playwright.selectors().setTestIdAttribute("data-test");
 
-            openPage();
+
             page.getByLabel("Hammer").click();
             page.getByLabel("Chisels").click();
             page.getByLabel("Wrench").click();
@@ -380,8 +381,12 @@ class TestPlayWrightLocators {
         void filteringMenuItemsByLocator() {
             openPage();
 
-            List<String> allProducts = page.locator(".card")
-                    .filter(new Locator.FilterOptions().setHas(page.getByText("Out of stock")))
+            Locator outOfStockCards = page.locator(".card")
+                    .filter(new Locator.FilterOptions().setHasText("Out of stock"));
+
+            page.waitForCondition(() -> outOfStockCards.count() > 0);
+
+            List<String> allProducts = outOfStockCards
                     .getByTestId("product-name")
                     .allTextContents();
 
@@ -392,6 +397,6 @@ class TestPlayWrightLocators {
 
     private void openPage() {
         page.navigate("https://practicesoftwaretesting.com");
-        page.waitForLoadState(LoadState.NETWORKIDLE);
+        page.waitForCondition(() -> page.locator(".card").count() > 0);
     }
 }
