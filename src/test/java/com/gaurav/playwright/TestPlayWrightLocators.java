@@ -71,7 +71,7 @@ class TestPlayWrightLocators {
             page.locator("#first_name").fill("Sarah-Jane");
             page.locator(".btnSubmit").click();
             List<String> alertMessages = page.locator(".alert").allTextContents();
-            Assertions.assertTrue(!alertMessages.isEmpty());
+            Assertions.assertFalse(alertMessages.isEmpty());
 
         }
 
