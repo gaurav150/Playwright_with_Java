@@ -40,5 +40,20 @@ class TestAddingItemsToTheCart {
         assertThat(outOfStockItem).hasText("Long Nose Pliers");
     }
 
+    @Test
+    @DisplayName("Chaining assertions on product search results with AssertJ")
+    void chainedAssertionsOnProductSearchResults(Page page) {
+        page.navigate("https://practicesoftwaretesting.com");
+
+        // Using AssertJ assertions to chain multiple checks on product search results
+        Locator searchField = page.getByPlaceholder("Search");
+        searchField.fill("Pliers");
+        searchField.press("Enter");
+        assertThat(searchField).hasValue("Pliers");
+
+
+
+    }
+
 }
 
