@@ -27,7 +27,7 @@ class TestPlayWrightAssertions {
         var lastName = page.getByLabel("Last name");
         var emailAddress = page.getByLabel("Email address");
         var messageLocator = page.getByLabel("Message");
-        var subjectLocator  = page.getByLabel("Subject");
+        var subjectLocator = page.getByLabel("Subject");
         firstName.fill("amit");
         lastName.fill("biswal");
         emailAddress.fill("amit_biswal@gmail.com");
@@ -47,7 +47,7 @@ class TestPlayWrightAssertions {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Send")).click();
         String textMessage = page.locator(".alert-success").textContent();
         Assertions.assertTrue(textMessage.contains("Thanks for your message"));
-        System.out.println("text is -> "+ textMessage);
+        System.out.println("text is -> " + textMessage);
         page.pause();
         context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));
         browser.close();
